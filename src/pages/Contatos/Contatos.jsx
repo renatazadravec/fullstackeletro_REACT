@@ -1,3 +1,5 @@
+import { PageTitle } from "../../components";
+
 export default () => {
-    return "Contatos"
-}
+  return <PageTitle titulo="Fale Conosco" />;
+};

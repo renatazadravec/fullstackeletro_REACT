@@ -1,3 +1,5 @@
+import { PageTitle } from "../../components";
+
 export default () => {
-    return "Pedidos"
-}
+  return <PageTitle titulo="Pedidos" />;
+};
