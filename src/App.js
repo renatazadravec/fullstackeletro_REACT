@@ -1,7 +1,7 @@
 import { BrowserRouter } from "react-router-dom";
 
 import { Layout } from "./components/Layout/Layout";
-import { default as Rotas } from "./rotas";
+import  Rotas  from "./rotas";
 
 function App() {
   return (
