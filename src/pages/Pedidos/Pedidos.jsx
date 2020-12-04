@@ -1,8 +1,17 @@
+import React from "react";
 import { PageTitle } from "../../components";
 import { Form, Button } from "react-bootstrap";
 import "./pedidos.css";
 
 export default () => {
+  const [produtos, setProdutos] = React.useState([]);
+
+  React.useEffect(async () => {
+    const url = "http://localhost/lojafullstackreactback/produtos-lista.php";
+    const response = await fetch(url);
+    setProdutos(await response.json());
+  }, []);
+
   const registerPedido = (event) => {
     event.preventDefault();
 
@@ -26,6 +35,7 @@ export default () => {
             type="text"
             name="nome_cliente"
             placeholder="Seu Nome"
+            required
           />
         </Form.Group>
 
@@ -47,13 +57,18 @@ export default () => {
           />
         </Form.Group>
 
-        <Form.Group controlId="formBasicEmail">
+        <Form.Group controlId="exampleForm.ControlSelect1">
           <Form.Label>Nome do Produto</Form.Label>
-          <Form.Control
-            type="text"
-            name="nome_do_produto"
-            placeholder="Nome do Produto"
-          />
+          <Form.Control as="select" name="id_produto" required>
+            <option>
+              Selecione
+            </option>
+            {produtos.map((produto, key) => (
+              <option value={produto.id} key={key}>
+                {produto.nome}
+              </option>
+            ))}
+          </Form.Control>
         </Form.Group>
 
         <Form.Group controlId="formBasicEmail">
