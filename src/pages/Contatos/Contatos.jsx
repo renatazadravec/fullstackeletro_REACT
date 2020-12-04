@@ -1,11 +1,24 @@
-import {Form, Button } from 'react-bootstrap'
-
+import { Form, Button } from "react-bootstrap";
 import { PageTitle } from "../../components";
 import ImagemMail from "../../images/email.jpg";
 import ImagemWhats from "../../images/whatsapp.png";
 import "./contato.css";
 
 export default () => {
+  const registerContato = (event) => {
+    event.preventDefault();
+
+    var formData = new FormData(event.target);
+
+    const url = "http://localhost/lojafullstackreactback/contato-guarda.php";
+
+    fetch(url, {
+      method: "POST",
+      body: formData,
+    }).then(response=>console.log(response));
+
+  };
+
   return (
     <div className="pagina-contato">
       <PageTitle titulo="Fale Conosco" />
@@ -22,17 +35,17 @@ export default () => {
         </div>
       </div>
 
-      <Form>
+      <Form onSubmit={registerContato}>
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Nome</Form.Label>
-          <Form.Control type="text" placeholder="Seu Nome" />
+          <Form.Control type="text" name="nome" placeholder="Seu Nome" />
         </Form.Group>
 
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Mensagem</Form.Label>
-          <Form.Control as="textarea" placeholder="Sua Mensagem" rows={3} />
+          <Form.Control as="textarea" name="mensagem" placeholder="Sua Mensagem" rows={3} />
         </Form.Group>
-        
+
         <Button variant="primary" type="submit">
           Enviar
         </Button>
