@@ -28,7 +28,7 @@ export default () => {
           <Row>
             {filter != null
               ? produtos
-                  .filter((produto) => produto.categoria === filter)
+                  .filter((produto) => produto.slug === filter)
                   .map((produto, key) => (
                     <CardProduto data={produto} key={key} />
                   ))

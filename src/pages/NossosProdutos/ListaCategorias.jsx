@@ -1,28 +1,34 @@
+import React from "react";
 import { ListGroup } from "react-bootstrap";
 import "./listacategorias.css";
 
 export const ListaCategorias = ({ setFilter }) => {
-  const categoriasData = [
-    { label: "Todos", slug: null },
-    { label: "Geladeiras", slug: "geladeiras" },
-    { label: "Fogões", slug: "fogoes" },
-    { label: "Microondas", slug: "microondas" },
-    { label: "Lava Louças", slug: "lavaLoucas" },
-    { label: "Lavadora de Roupas", slug: "lavadoraDeRoupas" },
-  ];
+  const [categorias, setCategorias] = React.useState([]);
+
+  React.useEffect(async () => {
+    const url = "http://localhost/lojafullstackreactback/categorias-lista.php";
+    const response = await fetch(url);
+    setCategorias(await response.json());
+  }, []);
 
   return (
     <div className="categorias">
       <h3>Categorias</h3>
 
       <ListGroup variant="flush">
-        {categoriasData.map((cat, key) => (
+        <ListGroup.Item
+          className="itemCategoria"
+          onClick={() => setFilter(null)}
+        >
+          Todos
+        </ListGroup.Item>
+        {categorias.map((cat, key) => (
           <ListGroup.Item
             className="itemCategoria"
             key={key}
             onClick={() => setFilter(cat.slug)}
           >
-            {cat.label}
+            {cat.nome}
           </ListGroup.Item>
         ))}
       </ListGroup>
