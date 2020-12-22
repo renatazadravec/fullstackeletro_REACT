@@ -6,7 +6,7 @@ export const ListaCategorias = ({ setFilter }) => {
   const [categorias, setCategorias] = React.useState([]);
 
   React.useEffect(async () => {
-    const url = "http://localhost/lojafullstackreactback/categorias-lista.php";
+    const url = "http://192.168.0.109/lojafullstackreactback/categorias-lista.php";
     const response = await fetch(url);
     setCategorias(await response.json());
   }, []);
