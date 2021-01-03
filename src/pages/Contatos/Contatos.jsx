@@ -10,7 +10,7 @@ export default () => {
 
     var formData = new FormData(event.target);
 
-    const url = "http://localhost/lojafullstackreactback/contato-guarda.php";
+    const url = "http://api.projetoloja.sytes.net/contato-guarda.php";
 
     fetch(url, {
       method: "POST",

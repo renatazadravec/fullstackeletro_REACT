@@ -6,7 +6,7 @@ export const ListaCategorias = ({ setFilter }) => {
   const [categorias, setCategorias] = React.useState([]);
 
   React.useEffect(async () => {
-    const url = "http://192.168.0.104/fullstackeletro_REACT_API/categorias-lista.php";
+    const url = "http://api.projetoloja.sytes.net/categorias-lista.php";
     const response = await fetch(url);
     setCategorias(await response.json());
   }, []);
