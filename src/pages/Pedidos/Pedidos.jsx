@@ -7,7 +7,7 @@ export default () => {
   const [produtos, setProdutos] = React.useState([]);
 
   React.useEffect(async () => {
-    const url = "http://192.168.0.104/projetoloja/fullstackeletro_REACT_API/pedidos-guarda.php";
+    const url = "http://192.168.0.104/fullstackeletro_REACT_API/pedidos-guarda.php";
     const response = await fetch(url);
     setProdutos(await response.json());
   }, []);
@@ -17,7 +17,7 @@ export default () => {
 
     var formData = new FormData(event.target);
 
-    const url = "http://192.168.0.104/projetoloja/fullstackeletro_REACT_API/pedidos-guarda.php";
+    const url = "http://192.168.0.104/fullstackeletro_REACT_API/pedidos-guarda.php";
 
     fetch(url, {
       method: "POST",
