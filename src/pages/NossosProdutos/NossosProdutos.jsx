@@ -10,7 +10,7 @@ export default () => {
   const [filter, setFilter] = React.useState(null);
 
   React.useEffect(async () => {
-    const url = "http://192.168.0.109/lojafullstackreactback/produtos-lista.php";
+    const url = "http://192.168.0.104/projetoloja/lojafullstackreactback/produtos-lista.php";
     const response = await fetch(url);
     setProdutos(await response.json());
   }, []);
